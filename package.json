@@ -1,0 +1,22 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "my personnal portfolio",
+  "main": "src/script/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quentinformatique/portfolio.git"
+  },
+  "keywords": [
+    "portfolio"
+  ],
+  "author": "quentinformatique",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/quentinformatique/portfolio/issues"
+  },
+  "homepage": "https://github.com/quentinformatique/portfolio#readme"
+}
