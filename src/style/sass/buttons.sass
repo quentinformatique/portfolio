@@ -1,6 +1,6 @@
-@use 'main'
+@import 'main'
 
-.button-code-light 
+.button-code
     text-decoration: none
     display: inline-block
     outline: 0
@@ -11,16 +11,19 @@
     vertical-align: middle
     border: 1px solid
     color: #ffffff
-    background-color: #182835
-    border-color: #1b1f2326
-    border-radius: 10px 
+    background-color: $dark-grey
+    border-radius: 15px 
+    color: $light-green
+    box-shadow: 3px 3px $dark-grey
+    transition: all .25s
 
 
-.button-code-light:hover 
+.button-code:hover
     background-color: #294257
-    transform: rotate(2deg) scale(1.2)
-    
+    transform: scale(1.05)
 
-.light-button 
-    box-shadow: 10px 5px 5px #00CC8E
-    color: #00CC8E
+.button-code:active 
+    
+    transform: translate(2px, 2px)
+    box-shadow: 1px 1px 0 $dark-grey
+    
