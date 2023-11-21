@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+.button-code-light {
+  text-decoration: none;
+  display: inline-block;
+  outline: 0;
+  cursor: pointer;
+  padding: 8px 18px;
+  font-size: 18px;
+  line-height: 20px;
+  vertical-align: middle;
+  border: 1px solid;
+  color: #ffffff;
+  background-color: #182835;
+  border-color: rgba(27, 31, 35, 0.1490196078);
+  border-radius: 10px;
+}
+
+.button-code-light:hover {
+  background-color: #294257;
+  transform: rotate(2deg) scale(1.2);
+}
+
+.light-button {
+  box-shadow: 10px 5px 5px #00CC8E;
+  color: #00CC8E;
+}
+
+/*# sourceMappingURL=buttons.css.map */
