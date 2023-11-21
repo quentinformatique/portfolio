@@ -1,5 +1,4 @@
-import { gsap } from "gsap";
-
 gsap.to(".text-gradient", {
+    duration: 2,
     x: 200,
 });

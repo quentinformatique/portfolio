@@ -5,6 +5,7 @@ body {
     margin: 0;
     color: white;
     background-color: #182835;
+    scroll-behavior: smooth;
 }
 
 h1 {

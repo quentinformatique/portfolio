@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "description": "my personnal portfolio",
+  "description": "my personal portfolio",
   "main": "src/script/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/quentinformatique/portfolio/issues"
   },
-  "homepage": "https://github.com/quentinformatique/portfolio#readme"
+  "homepage": "https://github.com/quentinformatique/portfolio#readme",
+  "dependencies": {
+    "gsap": "^3.12.2"
+  }
 }
