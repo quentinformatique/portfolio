@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap");
 .button-code {
   text-decoration: none;
   display: inline-block;
@@ -9,19 +9,16 @@
   line-height: 20px;
   vertical-align: middle;
   border: 1px solid;
-  color: #ffffff;
   background-color: #182835;
   border-radius: 15px;
   color: #00CC8E;
   box-shadow: 3px 3px #182835;
   transition: all 0.25s;
 }
-
 .button-code:hover {
   background-color: #294257;
   transform: scale(1.05);
 }
-
 .button-code:active {
   transform: translate(2px, 2px);
   box-shadow: 1px 1px 0 #182835;

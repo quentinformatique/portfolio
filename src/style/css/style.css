@@ -1,26 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap");
 body {
   font-family: "Montserrat", sans-serif;
   margin: 0;
   color: white;
   background-color: #182835;
   scroll-behavior: smooth;
-}
-
-.line {
-  font-size: 3rem;
-}
-
-p {
-  font-size: 1.5rem;
-}
-
-.center {
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  align-items: center;
-  min-height: 500px;
-  padding: 50px 20vw;
 }
 
 footer {
@@ -32,9 +16,48 @@ footer {
   background-color: #00CC8E;
 }
 
+p {
+  font-size: 1.5rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+.line {
+  font-size: 3rem;
+}
+
+.center {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  min-height: 500px;
+  padding: 50px 20vw;
+}
+
 .personal-description {
   padding-top: 3vw;
-  font-weight: 4px;
+  font-size: 1.6rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.personal-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 50px 20vw;
+}
+
+.dark {
+  color: #182835;
+}
+
+.resume {
+  width: fit-content;
 }
 
 .text-gradient {
@@ -51,39 +74,18 @@ footer {
   background-color: #038373;
 }
 
-.spacer {
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
   width: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  padding: 50px 20vw;
 }
 
-.ratio-100 {
-  aspect-ratio: 960/100;
-}
-
-.ratio-250 {
-  aspect-ratio: 900/250;
-}
-
-.layer1 {
-  background-image: url("../../assets/svg/stacked-peaks-haikei.svg");
-}
-
-.small-wave {
-  background-image: url("../../assets/svg/wave-dark-to-light.svg");
-}
-
-.contact-svg {
-  background-image: url("../../assets/svg/wave-haikei2.svg");
-}
-
-.flip {
-  transform: rotate(180deg);
-}
-
-#top {
-  padding-top: 7vw;
+.icon {
+  margin: 5px;
+  transition: all 0.25s;
 }
 
 /*# sourceMappingURL=style.css.map */

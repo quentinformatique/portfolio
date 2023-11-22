@@ -1,19 +1,29 @@
-body 
-    font-family: 'Montserrat', sans-serif
+@import 'main'
+
+body
+    font-family: $font
     margin: 0
     color: white
-    background-color: #182835
+    background-color:  $dark-grey
     scroll-behavior: smooth
 
+footer
+    display: flex
+    flex-direction: column
+    align-items: center
+    min-height: 100px
+    padding: 50px 20vw
+    background-color: $light-green
+
+
+p
+    font-size: 1.5rem
+
+a
+    text-decoration: none
 
 .line 
     font-size: 3rem
-
-
-p 
-    font-size: 1.5rem
-
-
 
 .center 
     display: flex
@@ -23,66 +33,45 @@ p
     min-height: 500px
     padding: 50px 20vw
 
-
-footer 
-    display: flex
-    flex-direction: column
-    align-items: center
-    min-height: 100px
-    padding: 50px 20vw
-    background-color: #00CC8E
-
-
 .personal-description 
     padding-top: 3vw
-    font-weight: 4px
+    font-size: 1.6rem
+    text-align: center
+    font-weight: 600
 
+
+.personal-section
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+    align-items: center
+    padding: 50px 20vw
+
+.dark
+    color: $dark-grey
+
+.resume
+    width: fit-content
 
 .text-gradient 
-    background: -webkit-linear-gradient(#00CC8E, #038373)
+    background: -webkit-linear-gradient($light-green, $dark-green)
     -webkit-background-clip: text
     -webkit-text-fill-color: transparent
 
+.light-green
+    background-color: $light-green
 
+.dark-green
+    background-color: $dark-green
 
-.light-green 
-    background-color: #00CC8E
-
-
-.dark-green 
-    background-color: #038373
-
-
-.spacer 
+.links
+    display: flex
+    flex-direction: row
+    justify-content: space-around
+    align-items: center
     width: 100%
-    background-repeat: no-repeat
-    background-position: center
-    background-size: cover
+    padding: 50px 20vw
 
-
-.ratio-100 
-    aspect-ratio: 960/100
-
-
-.ratio-250 
-    aspect-ratio: 900/250
-
-
-.layer1 
-    background-image: url('../../assets/svg/stacked-peaks-haikei.svg')
-
-
-.small-wave 
-    background-image: url('../../assets/svg/wave-dark-to-light.svg')
-
-
-.contact-svg 
-    background-image: url('../../assets/svg/wave-haikei2.svg')
-
-
-.flip 
-    transform: rotate(180deg)
-
-
-#top 
-    padding-top: 7vw
+.icon
+    margin: 5px
+    transition: all .25s

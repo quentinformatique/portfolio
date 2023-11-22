@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/quentinformatique/portfolio#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.2",
     "gsap": "^3.12.2"
   }
 }
