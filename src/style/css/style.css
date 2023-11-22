@@ -92,4 +92,14 @@ h1 {
   padding-top: 10vw;
 }
 
+.project {
+  display: flex;
+}
+
+.project-text {
+  width: 40vw;
+  padding-left: 5vw;
+  padding-top: 10vw;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -10,4 +10,4 @@ function slideIt() {
     gsap.to({}, { duration: 2.5, onComplete: slideIt });
 }
 
-gsap.delayedCall(3, () => slideIt());
+gsap.delayedCall(4, () => slideIt());

@@ -1,9 +1,9 @@
-.box-container {
-  width: 60rem;
-  height: 30rem;
+.box-carousel {
   position: relative;
   margin: 10rem auto;
   overflow: hidden;
+  width: 38vw;
+  height: 30vw;
 }
 
 .box {
@@ -12,6 +12,11 @@
   height: 100%;
   display: grid;
   place-items: center;
+}
+
+img {
+  height: 100%;
+  max-width: 100%;
 }
 
 /*# sourceMappingURL=carousel.css.map */
