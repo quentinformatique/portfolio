@@ -2,7 +2,7 @@
   "name": "portfolio",
   "version": "1.0.0",
   "description": "my personal portfolio",
-  "main": "src/script/index.js",
+  "main": "src/scripts/index.js",
   "scripts": {
     "sass-dev": "sass --watch --update --style=expanded src/style/sass:src/style/css",
     "sass-prod": "sass --no-source-map --style=compressed src/tyle/sass:src/style/css"
