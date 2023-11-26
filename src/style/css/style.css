@@ -102,6 +102,22 @@ h1 {
   padding-top: 10vw;
 }
 
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-link {
+  padding: 5vh;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: white;
+}
+.contact-link:hover {
+  text-decoration: underline;
+}
+
 @media only screen and (max-width: 800px) {
   .project {
     flex-direction: column;
