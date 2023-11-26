@@ -1,8 +1,17 @@
-.box-carousel {
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap");
+.box-image {
   position: relative;
   margin: 10rem auto;
   overflow: hidden;
+}
+
+.img-cuby {
   width: 38vw;
+  height: 30vw;
+}
+
+.img-readme {
+  width: 45vw;
   height: 30vw;
 }
 
@@ -13,10 +22,9 @@
   display: grid;
   place-items: center;
 }
-
-img {
+.box img {
   height: 100%;
   max-width: 100%;
 }
 
-/*# sourceMappingURL=carousel.css.map */
+/*# sourceMappingURL=images.css.map */
