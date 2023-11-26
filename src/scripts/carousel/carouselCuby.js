@@ -1,5 +1,5 @@
 let count = 0;
-const targets = document.querySelectorAll(".box");
+const targets = document.querySelectorAll(".img-cuby");
 gsap.set(targets, { xPercent: -100 });
 gsap.set(targets[0], { xPercent: 0 });
 
