@@ -102,4 +102,31 @@ h1 {
   padding-top: 10vw;
 }
 
+@media only screen and (max-width: 800px) {
+  .project {
+    flex-direction: column;
+  }
+  .project-text {
+    width: 75vw;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  .unreversed {
+    flex-direction: column-reverse;
+  }
+  .img-cuby {
+    width: 80vw;
+    height: 63vw;
+  }
+  .img-readme {
+    width: 80vw;
+    height: 53vw;
+  }
+  .img-amicale {
+    width: 90vw;
+    height: 50vw;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
