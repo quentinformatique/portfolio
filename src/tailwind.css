@@ -1,0 +1,38 @@
+ @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply text-gray-900 dark:text-white bg-white dark:bg-gray-950 overflow-hidden;
+    }
+}
+
+
+@layer components {
+    a {
+        @apply hover:underline active:opacity-60 transition-opacity;
+    }
+
+    button {
+        @apply border border-transparent transition-all hover:border-gray-200
+        dark:hover:border-gray-700 active:shadow dark:active:shadow-gray-800 rounded-md
+        bg-transparent hover:bg-[rgba(0,0,0,.05)] select-none hover:cursor-pointer;
+    }
+
+    .wave-1 {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='30' viewBox='0 0 1000 120'%3E%3Cg fill='none' stroke='%23222' stroke-width='10' stroke-opacity='0.2'%3E%3Cpath d='M-500 75c0 0 125-30 250-30S0 75 0 75s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 45c0 0 125-30 250-30S0 45 0 45s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 105c0 0 125-30 250-30S0 105 0 105s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 15c0 0 125-30 250-30S0 15 0 15s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500-15c0 0 125-30 250-30S0-15 0-15s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 135c0 0 125-30 250-30S0 135 0 135s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3C/g%3E%3C/svg%3E");
+    }
+}
+
+
+@layer utilities {
+    .text-rainbow,
+    .text-dark-rainbow {
+        @apply bg-clip-text text-transparent bg-gradient-to-br;
+    }
+
+    .text-rainbow {
+        @apply from-violet-500 to-red-500;
+    }
+}
