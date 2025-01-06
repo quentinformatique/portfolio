@@ -20,5 +20,8 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "../../../../Library/Caches/JetBrains/WebStorm2024.2/javascript/typings/node/22.7.4/node_modules/@types/node/globals.d.ts"
+  ]
 }

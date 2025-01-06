@@ -8,9 +8,13 @@ interface Properties {
 }
 
 export default function PublicLayout({ children }: Properties) {
-  const [cookies] = useCookies(["viewMode"]);
+  const [cookies, setCookie] = useCookies(["viewMode"]);
 
-  if (cookies.viewMode === ViewMode.DARK) {
+  console.log("check cookie", cookies.viewMode);
+
+  if (cookies.viewMode === undefined) {
+    setCookie("viewMode", ViewMode.LIGHT);
+  } else if (cookies.viewMode === ViewMode.DARK) {
     document.documentElement.classList.add("dark");
   }
 
@@ -18,7 +22,10 @@ export default function PublicLayout({ children }: Properties) {
     <>
       <NavBar />
 
-      <div className="pt-[70px] min-h-screen relative">
+      <div className="pt-[70px] min-h-screen relative
+                      select-none cursor-default"
+           id="app">
+
         {children}
       </div>
     </>

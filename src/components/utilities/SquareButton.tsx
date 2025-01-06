@@ -13,7 +13,10 @@ export default function SquareButton({ children,
                                        onClick = () => {} }: Properties) {
 
   return (
-    <button className={"aspect-square p-px " + className} style={style} onClick={onClick}>
+    <button className={"aspect-square p-px " + className}
+            style={style}
+            onClick={onClick}>
+
       {children}
     </button>
   );

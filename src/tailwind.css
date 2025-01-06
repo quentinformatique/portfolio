@@ -4,7 +4,7 @@
 
 @layer base {
     body {
-        @apply text-gray-900 dark:text-white bg-white dark:bg-gray-950;
+        @apply text-gray-900 dark:text-white bg-white dark:bg-gray-950 overflow-hidden;
     }
 }
 
@@ -15,8 +15,9 @@
     }
 
     button {
-        @apply border border-transparent rounded-md transition-all hover:border-gray-200
-        dark:hover:border-gray-700 active:shadow dark:active:shadow-gray-800;
+        @apply border border-transparent transition-all hover:border-gray-200
+        dark:hover:border-gray-700 active:shadow dark:active:shadow-gray-800 rounded-md
+        bg-transparent hover:bg-[rgba(0,0,0,.05)] select-none hover:cursor-pointer;
     }
 
     .wave-1 {
@@ -32,10 +33,6 @@
     }
 
     .text-rainbow {
-        @apply from-red-400 to-violet-400;
-    }
-
-    .text-dark-rainbow {
-        @apply from-red-500 to-violet-500;
+        @apply from-violet-500 to-red-500;
     }
 }
