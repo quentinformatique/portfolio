@@ -1,4 +1,4 @@
-import SchoolExperience from "./SchoolExperience.ts";
+ import SchoolExperience from "./SchoolExperience.ts";
 import {useEffect, useState} from "react";
 
 interface Properties {
@@ -32,7 +32,7 @@ export default function SchoolExperienceCard({ className = "",
   return (
     <article className={className}>
       <div className="flex items-center gap-x-2">
-        <div className="flex-none w-6 h-6 rounded bg-center bg-contain"
+        <div className="flex-none w-24 h-24 rounded bg-center bg-contain bg-no-repeat"
              style={logoStyles}></div>
 
         <h5 className="flex-1 font-bold">

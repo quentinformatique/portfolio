@@ -10,10 +10,9 @@ interface Properties {
 export default function ProjectCard({ className = "", project }: Properties) {
   const [bannerImage, setBannerImage] = useState<string>("");
 
-  const bannerStyles = {
-    backgroundImage: `url("${bannerImage}")`,
-    backgroundColor: project.banner.color,
-  };
+
+  const imgBG = { backgroundImage:  `url("${bannerImage}")`};
+  const colorBG = { backgroundColor: project.banner.color};
 
   const projectsBannersDirectoryPath = "/src/assets/projects";
 
@@ -34,8 +33,10 @@ export default function ProjectCard({ className = "", project }: Properties) {
                          rounded-xl flex flex-col gap-y-3 overflow-hidden md:hover:rotate-1
                          md:hover:scale-110 transition-transform`}>
 
-      <div className="flex-none h-20 bg-center bg-contain bg-no-repeat"
-           style={bannerStyles}></div>
+      <div className="flex-none flex items-center justify-center h-24 py-2 "
+           style={colorBG}>
+        <div className="w-full h-full  bg-center bg-contain bg-no-repeat" style={imgBG}></div>
+      </div>
 
       <div className="flex-1 p-3 flex flex-col gap-y-5">
         <div className="flex-1">

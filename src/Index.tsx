@@ -116,14 +116,14 @@ export default function Index() {
                            text-rainbow"
                 ref={name}>
 
-              Jonathan Guil
+              Quentin Costes
             </h3>
 
             <h4 className="text-2xl md:text-4xl lg:text-5xl font-bold text-blue-500"
                 ref={subtitle}>
 
               computer science @&nbsp;
-              <a href="https://uqac.ca/" target="_blank">uqac</a>
+              <a href="https://uqac.ca/" target="_blank">IUT de Rodez</a>
             </h4>
           </div>
         </section>

@@ -34,4 +34,5 @@ export default class SchoolExperience {
 
 export enum ExperienceType {
   internship = "Internship",
+  workStudyProgram = "Work-study program",
 }
