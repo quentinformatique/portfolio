@@ -8,7 +8,7 @@ interface Properties {
 
 export default function Button({ children,
                                  className = "",
-                                 color = Color.blue }: Properties) {
+                                 color = Color.secondary }: Properties) {
 
   function getColorClasses() {
     switch (color) {
@@ -17,7 +17,7 @@ export default function Button({ children,
         return "bg-blue-600 hover:bg-blue-700 text-white";
 
       case Color.secondary:
-        return "bg-gray-600 hover:bg-gray-700 text-white";
+        return "dark:bg-gray-800 bg-gray-200 hover:bg-gray-700 dark:text-white text-black";
 
       case Color.success:
         return "bg-green-600 hover:bg-green-700 text-white";

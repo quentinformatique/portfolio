@@ -2,12 +2,13 @@ import PublicLayout from "./layouts/PublicLayout.tsx";
 import Waves from "./components/branding/Waves.tsx";
 import {gsap} from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
-import {MutableRefObject, useEffect, useRef} from "react";
+import {MutableRefObject, useEffect, useRef, useState} from "react";
 import CurriculumTimeline from "./components/main/curriculum/CurriculumTimeline.tsx";
 import ProjectsGrid from "./components/main/projects/ProjectsGrid.tsx";
 
 import curriculum from "./data/CurriculumData.ts";
 import projects from "./data/ProjectsData.ts";
+import Footer from "./components/main/Footer.tsx";
 
 export default function Index() {
   const name = useRef(null),
@@ -19,6 +20,7 @@ export default function Index() {
         projectsSection = useRef(null);
 
   const sectionsClasses = "bg-white dark:bg-gray-950 px-10 lg:px-32 2xl:px-56 w-full relative";
+  let TL ;
 
   function onScrollWelcome() {
     const TL = gsap.timeline({paused: false});
@@ -75,10 +77,12 @@ export default function Index() {
     }
   }
 
-  function sectionsAnimation() {
-    const TL = gsap.timeline({paused: false});
-
+  function sectionsAnimation(gradient: string) {
+    TL = gsap.timeline({paused: false})
     TL
+      .add(() => {
+        console.log("gradient", gradient)
+      })
       .to(sectionsContainer.current, {
         scrollTrigger: {
           trigger: curriculumSection.current,
@@ -88,7 +92,7 @@ export default function Index() {
           scroller: "#base",
         },
 
-        backgroundImage: "linear-gradient(to bottom, #7c3aed, #ef4444)",
+        backgroundImage: gradient,
       });
   }
 
@@ -96,12 +100,22 @@ export default function Index() {
     gsap.registerPlugin(ScrollTrigger);
 
     onScrollWelcome();
-    sectionsAnimation();
+    sectionsAnimation(document.querySelector('html').classList.contains("dark") ? "linear-gradient(to bottom, #c84faa, #9e2a81)" : "linear-gradient(to bottom, #5fbca3, #3b9b82)");
     onScrollSections();
 
     document.querySelector("#base")
       ?.addEventListener("scroll", onScrollSections);
+
+    const handleToggleDarkMode = (event: CustomEvent) => {
+      sectionsAnimation(event.detail.gradient);
+    };
+    window.addEventListener("toggleDarkMode", handleToggleDarkMode);
+
+    return () => {
+      window.removeEventListener("toggleDarkMode", handleToggleDarkMode);
+    };
   }, []);
+
 
   return (
     <PublicLayout>
@@ -119,11 +133,11 @@ export default function Index() {
               Quentin Costes
             </h3>
 
-            <h4 className="text-2xl md:text-4xl lg:text-5xl font-bold text-blue-500"
+            <h4 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-600"
                 ref={subtitle}>
 
-              computer science @&nbsp;
-              <a href="https://uqac.ca/" target="_blank">IUT de Rodez</a>
+              student developer, intership at&nbsp;
+              <a href="https://doxallia.com" target="_blank">Doxallia</a>
             </h4>
           </div>
         </section>
@@ -143,7 +157,7 @@ export default function Index() {
               curriculum.
             </h3>
 
-            <CurriculumTimeline className="h-fit"
+            <CurriculumTimeline className="h-fit "
                                 curriculum={curriculum} />
           </section>
 
@@ -163,6 +177,7 @@ export default function Index() {
             <ProjectsGrid className="h-fit"
                           projects={projects} />
           </section>
+          <Footer />
         </div>
       </div>
     </PublicLayout>

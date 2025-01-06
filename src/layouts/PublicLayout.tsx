@@ -4,7 +4,7 @@ import {useCookies} from "react-cookie";
 import {ViewMode} from "../configs/ViewMode.ts";
 
 interface Properties {
-  children?: ReactNode,
+  children?: ReactNode
 }
 
 export default function PublicLayout({ children }: Properties) {

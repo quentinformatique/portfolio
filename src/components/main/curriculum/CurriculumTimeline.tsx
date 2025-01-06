@@ -79,8 +79,8 @@ export default function CurriculumTimeline({ className = "",
         </div>
 
         <div className="flex-none w-3 bg-gradient-to-b
-                        from-violet-500 to-red-500
-                        dark:from-gray-800 dark:to-gray-900"></div>
+                        from-blue to-blue2
+                        dark:from-purple dark:to-purple2"></div>
 
         <div className={mainColsClasses + " mr-16 2xl:mr-32"}>
           {getEvenCards().map(project => (
@@ -108,8 +108,8 @@ export default function CurriculumTimeline({ className = "",
                         w-10 z-10"></div>
 
         <div className="flex-none w-3 bg-gradient-to-b
-                        from-violet-500 to-red-500
-                        dark:from-gray-800 dark:to-gray-900"></div>
+                        from-blue to-blue2
+                        dark:from-purple dark:to-purple2"></div>
 
         <div className={mainColsClasses}>
           {curriculum.map(project => (

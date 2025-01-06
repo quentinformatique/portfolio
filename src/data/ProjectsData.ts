@@ -22,7 +22,7 @@ export default Array.from([
   {
     id: 3,
     project: new Project("Readme Creator",
-        "A python app who can created the readme.md file for your your github projects. It uses custom tkinter for the ui." +
+        "A python app who can create the readme.md file for your your github projects. It uses custom tkinter for the ui." +
         " For exemple this readme file was created using this generator.",
         new BannerAmbience("readme.png", "white"),
         "https://https://github.com/quentinformatique/readmeCreator"),

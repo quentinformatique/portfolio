@@ -18,7 +18,7 @@ export default Array.from([
       "France",
       "Preparing a French \"Bachelor " +
       "Universitaire de Technologie\" license " +
-      " in Computer Science, focused on application development " +
+      " In Computer Science, focused on application development " +
       "and deployment.",
       [
         new SchoolExperience("Backend Developer",
