@@ -20,7 +20,7 @@ export default function NavBar() {
         ? ViewMode.DARK
         : ViewMode.LIGHT;
 
-    const isDarkMode = document.querySelector('html').classList.toggle("dark");
+    const isDarkMode = document.querySelector('html')?.classList.toggle("dark");
 
     setViewMode(newViewMode);
 

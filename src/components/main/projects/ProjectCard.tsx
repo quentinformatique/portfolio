@@ -29,7 +29,7 @@ export default function ProjectCard({ className = "", project }: Properties) {
   }, []);
 
   return (
-    <article className={`${className} border border-gray-200 dark:border-gray-800
+    <article className={`${className} border border-gray-500 dark:border-gray-800
                          rounded-xl flex flex-col gap-y-3 overflow-hidden md:hover:rotate-1
                          md:hover:scale-110 transition-transform`}>
 

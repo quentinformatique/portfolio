@@ -2,7 +2,7 @@ import PublicLayout from "./layouts/PublicLayout.tsx";
 import Waves from "./components/branding/Waves.tsx";
 import {gsap} from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
-import {MutableRefObject, useEffect, useRef, useState} from "react";
+import {MutableRefObject, useEffect, useRef} from "react";
 import CurriculumTimeline from "./components/main/curriculum/CurriculumTimeline.tsx";
 import ProjectsGrid from "./components/main/projects/ProjectsGrid.tsx";
 
@@ -100,19 +100,22 @@ export default function Index() {
     gsap.registerPlugin(ScrollTrigger);
 
     onScrollWelcome();
-    sectionsAnimation(document.querySelector('html').classList.contains("dark") ? "linear-gradient(to bottom, #c84faa, #9e2a81)" : "linear-gradient(to bottom, #5fbca3, #3b9b82)");
+    sectionsAnimation(document.querySelector('html')?.classList.contains("dark") ? "linear-gradient(to bottom, #c84faa, #9e2a81)" : "linear-gradient(to bottom, #5fbca3, #3b9b82)");
     onScrollSections();
 
     document.querySelector("#base")
-      ?.addEventListener("scroll", onScrollSections);
+        ?.addEventListener("scroll", onScrollSections);
 
-    const handleToggleDarkMode = (event: CustomEvent) => {
-      sectionsAnimation(event.detail.gradient);
+    // Listen for the custom event to update the gradient
+    const handleToggleDarkMode = (event: Event) => {
+      const customEvent = event as CustomEvent;
+      sectionsAnimation(customEvent.detail.gradient);
     };
-    window.addEventListener("toggleDarkMode", handleToggleDarkMode);
+
+    window.addEventListener("toggleDarkMode", handleToggleDarkMode as EventListener);
 
     return () => {
-      window.removeEventListener("toggleDarkMode", handleToggleDarkMode);
+      window.removeEventListener("toggleDarkMode", handleToggleDarkMode as EventListener);
     };
   }, []);
 
@@ -126,17 +129,17 @@ export default function Index() {
           <Waves />
 
           <div className="relative z-10 flex flex-col justify-center items-center h-full">
-            <h3 className="text-6xl md:text-8xl lg:text-9xl font-bold
+            <h3 className="text-5xl text-center md:text-8xl lg:text-9xl font-bold
                            text-rainbow"
                 ref={name}>
 
               Quentin Costes
             </h3>
 
-            <h4 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-600"
+            <h4 className="text-2xl text-center md:text-4xl lg:text-5xl font-bold text-gray-600"
                 ref={subtitle}>
 
-              student developer, intership at&nbsp;
+              student developer, internship at&nbsp;
               <a href="https://doxallia.com" target="_blank">Doxallia</a>
             </h4>
           </div>

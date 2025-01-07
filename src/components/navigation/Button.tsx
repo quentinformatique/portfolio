@@ -17,7 +17,7 @@ export default function Button({ children,
         return "bg-blue-600 hover:bg-blue-700 text-white";
 
       case Color.secondary:
-        return "dark:bg-gray-800 bg-gray-200 hover:bg-gray-700 dark:text-white text-black";
+        return "dark:bg-purple bg-blue hover:bg-gray-700 dark:text-white text-black";
 
       case Color.success:
         return "bg-green-600 hover:bg-green-700 text-white";
