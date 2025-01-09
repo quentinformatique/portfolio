@@ -9,7 +9,7 @@ export default function Footer() {
                     <strong> Jonathan GUIL </strong>
                 </a>
                 and
-                <a href="https://github.com/belicfr" target="_blank">
+                <a href="https://github.com/quentinformatique" target="_blank">
                     <strong> Quentin COSTES </strong>
                 </a>
             </p>
