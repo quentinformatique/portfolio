@@ -14,9 +14,9 @@ export default Array.from([
     id: 2,
     school: new School("Institut Universitaire de Technologie de Rodez",
       SchoolType.college,
-      new SchoolDuration(2022),
+      new SchoolDuration(2022, 2025),
       "France",
-      "Preparing a French \"Bachelor " +
+      "French \"Bachelor " +
       "Universitaire de Technologie\" license " +
       " In Computer Science, focused on application development " +
       "and deployment.",
@@ -35,5 +35,14 @@ export default Array.from([
                                 ExperienceType.workStudyProgram,
                                 "doxallia.png"),
       ]),
+  },
+  {
+    id: 3,
+    school: new School("Epitech",
+      SchoolType.university,
+      new SchoolDuration(2025),
+      "France, Toulouse",
+      "Master's degree in Computer Science"
+    )
   }
 ]);

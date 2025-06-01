@@ -13,11 +13,12 @@ export default Array.from([
   },
   {
     id: 2,
-    project: new Project("Easy Git",
-                         "This is a Git client to handle repositories more easily. Inspired by tools like" +
-                          " GitHub Desktop, it is developed using ElectronJS, TypeScript, Vue.js and Vite.. (Work In Progress)",
-                         new BannerAmbience("easyGit.png", "#4b5563"),
-                         "https://github.com/quentinformatique/EasyGit/"),
+    project: new Project("pomodoro Timer",
+                         "This is a web Pomodoro timer. It is a simple and effective way to manage your time and " +
+                          "increase your productivity. It is a simple web app that you can use to manage your time. " +
+                          "It is built with React and Tailwind CSS.",
+                         new BannerAmbience("pomodoro.png", "#4b5563"),
+                         "https://pomodoro.costesquentin.fr/"),
   },
   {
     id: 3,
