@@ -1,5 +1,5 @@
-import School, {SchoolDuration, SchoolType} from "../components/main/curriculum/School.ts";
-import SchoolExperience, {ExperienceType} from "../components/main/curriculum/SchoolExperience.ts";
+import School, { SchoolDuration, SchoolType } from "../components/main/curriculum/School.ts";
+import SchoolExperience, { ExperienceType } from "../components/main/curriculum/SchoolExperience.ts";
 
 export default Array.from([
   {
@@ -22,18 +22,18 @@ export default Array.from([
       "and deployment.",
       [
         new SchoolExperience("Backend Developer",
-                             "I joined Doxallia's team to develop the backend of their" +
-                             "remote user identification system. I used .NET 8, C# and PostgresSQL.",
-                              ExperienceType.internship,
-                             "doxallia.png"),
+          "I joined Doxallia's team to develop the backend of their" +
+          "remote user identification system. I used .NET 8, C# and PostgresSQL.",
+          ExperienceType.internship,
+          "doxallia.png"),
         new SchoolExperience("Backend Developer and DevOps",
-                                `As a third-year student, Doxallia offered me a work-study program
+          `As a third-year student, Doxallia offered me a work-study program
                                 to develop the backend of their remote user identification system.
                                 I also work on the deployment of the system on GitLab by doing the CI-CD.
                                 I got the opportunity to work with PostgresSQL, Docker and GitLab, Jfrog Artifactory,
                                 while using .NET 8 and C# to develop the backend.`,
-                                ExperienceType.workStudyProgram,
-                                "doxallia.png"),
+          ExperienceType.workStudyProgram,
+          "doxallia.png"),
       ]),
   },
   {
@@ -42,7 +42,13 @@ export default Array.from([
       SchoolType.university,
       new SchoolDuration(2025),
       "France, Toulouse",
-      "Master's degree in Computer Science"
+      "Master's degree in Computer Science, specializing as a Cloud Architect. Currently in a work-study program (alternance).",
+      [
+        new SchoolExperience("Cloud Architect & DevOps Engineer",
+          "I'm pursuing my work-study program at Doxallia with increased responsibilities. I am now in charge of automating CI/CD pipelines, and the development of key backend services.",
+          ExperienceType.workStudyProgram,
+          "doxallia.png"),
+      ]
     )
   }
 ]);

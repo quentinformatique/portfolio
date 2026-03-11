@@ -1,188 +1,75 @@
 import PublicLayout from "./layouts/PublicLayout.tsx";
-import Waves from "./components/branding/Waves.tsx";
-import {gsap} from "gsap";
-import {ScrollTrigger} from "gsap/ScrollTrigger";
-import {MutableRefObject, useEffect, useRef} from "react";
 import CurriculumTimeline from "./components/main/curriculum/CurriculumTimeline.tsx";
 import ProjectsGrid from "./components/main/projects/ProjectsGrid.tsx";
-
+import Footer from "./components/main/Footer.tsx";
 import curriculum from "./data/CurriculumData.ts";
 import projects from "./data/ProjectsData.ts";
-import Footer from "./components/main/Footer.tsx";
+import { ArrowRight, Github, Linkedin } from "lucide-react";
 
 export default function Index() {
-  const name = useRef(null),
-        subtitle = useRef(null),
-        sectionsContainer = useRef(null),
-        curriculumTitle = useRef(null),
-        curriculumSection = useRef(null),
-        projectsTitle = useRef(null),
-        projectsSection = useRef(null);
-
-  const sectionsClasses = "bg-white dark:bg-gray-950 px-10 lg:px-32 2xl:px-56 w-full relative";
-  let TL ;
-
-  function onScrollWelcome() {
-    const TL = gsap.timeline({paused: false});
-
-    TL
-      .to(name.current, {
-        scrollTrigger: {
-          trigger: name.current,
-          start: "bottom center",
-          end: "bottom top",
-          scrub: true,
-          scroller: "#base",
-        },
-
-        y: -100,
-        opacity: 0,
-      })
-      .to(subtitle.current, {
-        scrollTrigger: {
-          trigger: subtitle.current,
-          start: "bottom center",
-          end: "bottom top",
-          scrub: true,
-          scroller: "#base",
-        },
-
-        y: -100,
-        opacity: 0,
-      });
-  }
-
-  function onScrollSections() {
-    sectionTitleAnimation(curriculumTitle, curriculumSection);
-    sectionTitleAnimation(projectsTitle, projectsSection);
-  }
-
-  function sectionTitleAnimation(titleElement: MutableRefObject<HTMLElement|null>,
-                                 sectionElement: MutableRefObject<HTMLElement|null>) {
-
-    if (titleElement.current === null || sectionElement.current === null) {
-      return;
-    }
-
-    const sectionPhysic = sectionElement.current.getBoundingClientRect();
-
-    if (sectionPhysic.y <= 0 && window.innerWidth >= 768) {
-      titleElement.current.style.position = "fixed";
-      titleElement.current.style.top = "70px";
-      titleElement.current.style.left = "46px";
-    } else {
-      titleElement.current.style.position = "absolute";
-      titleElement.current.style.top = "70px";
-      titleElement.current.style.left = "40px";
-    }
-  }
-
-  function sectionsAnimation(gradient: string) {
-    TL = gsap.timeline({paused: false})
-    TL
-      .add(() => {
-        console.log("gradient", gradient)
-      })
-      .to(sectionsContainer.current, {
-        scrollTrigger: {
-          trigger: curriculumSection.current,
-          start: "top bottom",
-          end: "top top",
-          scrub: true,
-          scroller: "#base",
-        },
-
-        backgroundImage: gradient,
-      });
-  }
-
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    onScrollWelcome();
-    sectionsAnimation(document.querySelector('html')?.classList.contains("dark") ? "linear-gradient(to bottom, #c84faa, #9e2a81)" : "linear-gradient(to bottom, #5fbca3, #3b9b82)");
-    onScrollSections();
-
-    document.querySelector("#base")
-        ?.addEventListener("scroll", onScrollSections);
-
-    // Listen for the custom event to update the gradient
-    const handleToggleDarkMode = (event: Event) => {
-      const customEvent = event as CustomEvent;
-      sectionsAnimation(customEvent.detail.gradient);
-    };
-
-    window.addEventListener("toggleDarkMode", handleToggleDarkMode as EventListener);
-
-    return () => {
-      window.removeEventListener("toggleDarkMode", handleToggleDarkMode as EventListener);
-    };
-  }, []);
-
-
   return (
     <PublicLayout>
-      <div className="absolute inset-0 overflow-x-hidden overflow-y-auto" id="base">
-        <section id="welcome"
-                 className="h-full bg-white dark:bg-gray-950">
-
-          <Waves />
-
-          <div className="relative z-10 flex flex-col justify-center items-center h-full">
-            <h3 className="text-5xl text-center md:text-8xl lg:text-9xl font-bold
-                           text-rainbow"
-                ref={name}>
-
-              Quentin Costes
-            </h3>
-
-            <h4 className="text-2xl text-center md:text-4xl lg:text-5xl font-bold text-gray-600"
-                ref={subtitle}>
-
-              student developer, internship at&nbsp;
-              <a href="https://doxallia.com" target="_blank">Doxallia</a>
-            </h4>
-          </div>
-        </section>
-
-        <div className="min-h-screen relative px-1.5"
-             ref={sectionsContainer}>
-
-          <section id="curriculum"
-                   className={sectionsClasses}
-                   ref={curriculumSection}>
-
-            <h3 className="text-4xl lg:text-5xl xl:text-6xl font-black
-                           inset-x-10 text-center md:text-left"
-                style={{position: "absolute"}}
-                ref={curriculumTitle}>
-
-              curriculum.
-            </h3>
-
-            <CurriculumTimeline className="h-fit "
-                                curriculum={curriculum} />
-          </section>
-
-          <section id="projects"
-                   className={sectionsClasses + " pt-72 pb-48 min-h-screen"}
-                   style={{borderColor: "transparent"}}
-                   ref={projectsSection}>
-
-            <h3 className="text-4xl lg:text-5xl xl:text-6xl font-black
-                           inset-x-10 text-center md:left-10 md:text-left"
-                style={{position: "absolute"}}
-                ref={projectsTitle}>
-
-              projects.
-            </h3>
-
-            <ProjectsGrid className="h-fit"
-                          projects={projects} />
-          </section>
-          <Footer />
+      {/* Hero Section */}
+      <section id="welcome" className="min-h-[90vh] flex flex-col justify-center items-start pt-20 pb-16">
+        <div className="space-y-6">
+          <p className="text-muted-foreground font-medium tracking-wide uppercase text-sm">Hi, my name is</p>
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-foreground">
+            Quentin Costes.
+          </h1>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-muted-foreground mt-2">
+            Student Cloud Architect & DevOps Engineer.
+          </h2>
+          <p className="max-w-xl text-lg sm:text-xl text-muted-foreground mt-6 leading-relaxed">
+            I'm a student developer currently in a work-study program at{" "}
+            <a href="https://doxallia.com" target="_blank" rel="noreferrer" className="text-foreground underline decoration-muted-foreground underline-offset-4 hover:decoration-foreground transition-colors font-medium">
+              Doxallia
+            </a>
+            . I specialize in building robust backend systems, cloud architectures, and DevOps workflows.
+          </p>
         </div>
-      </div>
+
+        <div className="mt-12 flex gap-4 items-center flex-wrap">
+          <a href="#projects" className="inline-flex items-center gap-2 bg-foreground text-background px-6 py-3 rounded-md font-medium hover:bg-foreground/90 transition-colors">
+            View My Work <ArrowRight className="w-4 h-4" />
+          </a>
+          <a href="https://github.com/quentinformatique" target="_blank" rel="noreferrer" className="p-3 text-muted-foreground hover:text-foreground transition-colors bg-muted/50 rounded-md hover:bg-muted">
+            <Github className="w-5 h-5" />
+          </a>
+          <a href="https://www.linkedin.com/in/quentin-costes-1595222a0/" target="_blank" rel="noreferrer" className="p-3 text-muted-foreground hover:text-foreground transition-colors bg-muted/50 rounded-md hover:bg-muted">
+            <Linkedin className="w-5 h-5" />
+          </a>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="py-24 border-t border-border/50">
+        <div className="mb-12 flex flex-col gap-4">
+          <h3 className="text-3xl font-bold tracking-tight text-foreground flex items-center gap-4">
+            <span className="text-muted-foreground font-mono text-xl font-medium">01.</span> Projects
+          </h3>
+          <p className="text-muted-foreground max-w-2xl">
+            A selection of projects I've built or contributed to, ranging from desktop apps to complete full-stack platforms.
+          </p>
+        </div>
+
+        <ProjectsGrid projects={projects} />
+      </section>
+
+      {/* Experience / Curriculum Section */}
+      <section id="curriculum" className="py-24 border-t border-border/50">
+        <div className="mb-12 flex flex-col gap-4">
+          <h3 className="text-3xl font-bold tracking-tight text-foreground flex items-center gap-4">
+            <span className="text-muted-foreground font-mono text-xl font-medium">02.</span> Experience & Education
+          </h3>
+          <p className="text-muted-foreground max-w-2xl">
+            My academic journey and professional experiences in software engineering.
+          </p>
+        </div>
+
+        <CurriculumTimeline curriculum={curriculum} />
+      </section>
+
+      <Footer />
     </PublicLayout>
   );
 }

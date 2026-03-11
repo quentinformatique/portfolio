@@ -1,180 +1,103 @@
-import Logo from "../branding/Logo.tsx";
-import SquareButton from "../utilities/SquareButton.tsx";
-import {useRef, useState} from "react";
+import {useState, useEffect} from "react";
 import {useCookies} from "react-cookie";
 import {ViewMode} from "../../configs/ViewMode.ts";
-import Icon from "../utilities/Icon.tsx";
-import {gsap, Power2} from "gsap";
+import { Moon, Sun, Menu, X } from "lucide-react";
+import { cn } from "../../lib/utils.ts";
 
 export default function NavBar() {
   const [cookies, setCookie] = useCookies(["viewMode"]);
-  const [viewMode, setViewMode] = useState(cookies.viewMode ?? ViewMode.LIGHT);
+  const [viewMode, setViewMode] = useState(cookies.viewMode ?? ViewMode.DARK);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const isMobileNavigationMenuOpened
-      = useRef<boolean>(false);
-
-  const mobileNavigationMenu = useRef(null);
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   function toggleViewMode() {
-    const newViewMode = cookies.viewMode === ViewMode.LIGHT
-        ? ViewMode.DARK
-        : ViewMode.LIGHT;
-
-    const isDarkMode = document.querySelector('html')?.classList.toggle("dark");
-
+    const newViewMode = viewMode === ViewMode.LIGHT ? ViewMode.DARK : ViewMode.LIGHT;
     setViewMode(newViewMode);
-
-    setCookie(
-        "viewMode",
-        newViewMode,
-        {path: "/"}
-    );
-
-
-      const gradient = isDarkMode ? "linear-gradient(to bottom, #c84faa, #9e2a81)" : "linear-gradient(to bottom, #5fbca3, #3b9b82)";
-
-      // Dispatch custom event with the new gradient
-      const event = new CustomEvent("toggleDarkMode", { detail: { gradient } });
-      window.dispatchEvent(event);
+    setCookie("viewMode", newViewMode, {path: "/"});
   }
 
-  function toggleMobileNavigationMenu() {
-    const TL = gsap.timeline({paused: false});
-
-    if (isMobileNavigationMenuOpened.current) {
-      TL
-          .to(mobileNavigationMenu.current, {
-            delay: 0,
-            duration: .5,
-
-            y: -500,
-            opacity: 0,
-
-            ease: Power2.easeIn,
-          })
-          .to(mobileNavigationMenu.current, {
-            delay: 0,
-            duration: 0,
-
-            display: "none",
-          });
-    } else {
-      TL
-          .to(mobileNavigationMenu.current, {
-            delay: 0,
-            duration: 0,
-
-            display: "flex",
-          })
-          .to(mobileNavigationMenu.current, {
-            delay: 0,
-            duration: 1,
-
-            y: 0,
-            opacity: 1,
-
-            ease: Power2.easeOut,
-          })
-    }
-
-    isMobileNavigationMenuOpened.current
-        = !isMobileNavigationMenuOpened.current;
-  }
+  const navLinks = [
+    { href: "#welcome", label: "Home" },
+    { href: "#projects", label: "Projects" },
+    { href: "#curriculum", label: "Curriculum" },
+  ];
 
   return (
-      <nav className="flex gap-x-16 justify-between md:justify-start
-                    items-center px-10 py-2 fixed top-0 inset-x-0
-                    h-[70px] z-50">
-
-        <div className="fixed inset-0 z-10 flex flex-col gap-y-10
-                      justify-center items-center text-3xl font-bold
-                      bg-gray-50 dark:bg-gray-900 shadow"
-             style={{display: "none", opacity: "0", transform: "translateY(-500px)"}}
-             ref={mobileNavigationMenu}>
-
-          <a onClick={toggleMobileNavigationMenu}
-             href="#welcome">
-
-            Home
-          </a>
-
-          <a onClick={toggleMobileNavigationMenu}
-             href="#curriculum">
-
-            Curriculum
-          </a>
-
-          <a onClick={toggleMobileNavigationMenu}
-             href="#projects">
-
-            My Projects
-          </a>
-
-          <hr/>
-
-          <a className="font-bold text-sky-600 dark:text-white" href="https://www.linkedin.com/in/quentin-costes-1595222a0/" target="_blank">
-            LinkedIn
-          </a>
-
-          <a className="font-bold" href="https://github.com/quentinformatique" target="_blank">
-            GitHub
+    <header className={cn(
+      "fixed top-0 inset-x-0 z-50 transition-all duration-300",
+      isScrolled ? "bg-background/80 backdrop-blur-md border-b border-border/50 py-4" : "bg-transparent py-6"
+    )}>
+      <nav className="w-full max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 flex justify-between items-center">
+        <div className="flex items-center gap-2">
+          <a href="#welcome" className="text-xl font-bold tracking-tighter text-foreground">
+            QC<span className="text-muted-foreground">.</span>
           </a>
         </div>
 
-        <div className="flex-none">
-          <Logo/>
-        </div>
-
-        <div className="flex-1 hidden md:flex gap-x-16 items-center">
-          <div className="flex-1 flex gap-x-10">
-            <a href="#welcome">
-              Home
-            </a>
-
-            <a href="#curriculum">
-              Curriculum
-            </a>
-
-            <a href="#projects">
-              My Projects
-            </a>
-          </div>
-
-          <div className="flex-none flex gap-x-10 items-center">
-            <a className="font-bold text-sky-600 dark:text-white" href="https://www.linkedin.com/in/quentin-costes-1595222a0/" target="_blank">
-              LinkedIn
-            </a>
-
-            <a className="font-bold" href="https://github.com/quentinformatique" target="_blank">
-              GitHub
-            </a>
-
-            <SquareButton className="w-10 h-10 flex items-center justify-center"
-                          onClick={toggleViewMode}>
-
-            <span className="material-symbols-outlined">
-              {viewMode}
-            </span>
-            </SquareButton>
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-8">
+          <ul className="flex gap-8 text-sm font-medium text-muted-foreground">
+            {navLinks.map((link) => (
+              <li key={link.label}>
+                <a href={link.href} className="hover:text-foreground transition-colors">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          
+          <div className="flex items-center gap-4 border-l border-border pl-6">
+             <button
+              onClick={toggleViewMode}
+              className="p-2 text-muted-foreground hover:text-foreground transition-colors hover:bg-muted rounded-md"
+              aria-label="Toggle theme"
+            >
+              {viewMode === ViewMode.DARK ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
           </div>
         </div>
 
-        <div className="flex md:hidden gap-x-5">
-          <SquareButton className="w-10 h-10 flex md:hidden
-                                 items-center justify-center
-                                 relative z-20"
-                        onClick={toggleViewMode}>
-
-            <Icon icon={viewMode} />
-          </SquareButton>
-
-          <SquareButton className="justify-center items-center w-10 h-10
-                        flex md:hidden relative z-20"
-                        onClick={toggleMobileNavigationMenu}>
-
-            <Icon className="text-3xl" icon="menu" />
-          </SquareButton>
+        {/* Mobile Navigation Toggle */}
+        <div className="flex md:hidden items-center gap-4">
+          <button
+            onClick={toggleViewMode}
+            className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+            aria-label="Toggle theme"
+          >
+            {viewMode === ViewMode.DARK ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+          </button>
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
       </nav>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden absolute top-full left-0 w-full bg-background border-b border-border shadow-lg py-4 px-6 flex flex-col gap-4">
+           {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-base font-medium text-muted-foreground hover:text-foreground py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {link.label}
+              </a>
+            ))}
+        </div>
+      )}
+    </header>
   );
 }
